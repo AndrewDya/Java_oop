@@ -5,4 +5,8 @@ public class My_class implements I_My{
     public int getUserID() {
         return 100;
     }
+    @Override
+    public int getAdminID() {
+        return 2;
+    }
 }
