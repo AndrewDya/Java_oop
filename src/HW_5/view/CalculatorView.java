@@ -1,7 +1,5 @@
 package HW_5.view;
 
-import HW_5.presenter.CalculatorPresenter;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -112,6 +110,10 @@ public class CalculatorView extends JFrame {
         setVisible(true);
     }
 
+    // Принцип единственной ответственности (Single Responsibility Principle, SRP)
+    // Класс представления отвечает только за отображение GUI и обработку действий пользователя.
+    // Он не содержит бизнес-логики и не зависит от презентера напрямую.
+
     public double getNum1() {
         return Double.parseDouble(num1Field.getText());
     }
@@ -171,6 +173,11 @@ public class CalculatorView extends JFrame {
             }
         }
     }
+
+    // Принцип открытости/закрытости (Open/Closed Principle, OCP)
+    // Класс представления предоставляет методы для добавления слушателей для каждой операции.
+    // Это позволяет добавлять новые операции без изменения кода представления.
+
     public void addCalculateListener(ActionListener listener) {
         addButton.addActionListener(listener);
     }

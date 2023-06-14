@@ -14,10 +14,10 @@ public class CalculatorPresenter {
         this.model = model;
         this.view = view;
 
-        view.addCalculateListener(new AddButtonListener());
-        view.subtractCalculateListener(new SubtractButtonListener());
-        view.multiplyCalculateListener(new MultiplyButtonListener());
-        view.divideCalculateListener(new DivideButtonListener());
+        view.addCalculateListener(new AddButtonListener()); // Используется принцип DIP - зависимость от абстракции
+        view.subtractCalculateListener(new SubtractButtonListener()); // Используется принцип DIP - зависимость от абстракции
+        view.multiplyCalculateListener(new MultiplyButtonListener()); // Используется принцип DIP - зависимость от абстракции
+        view.divideCalculateListener(new DivideButtonListener()); // Используется принцип DIP - зависимость от абстракции
     }
 
     class AddButtonListener implements ActionListener {
@@ -25,7 +25,7 @@ public class CalculatorPresenter {
         public void actionPerformed(ActionEvent e) {
             double num1 = view.getNum1();
             double num2 = view.getNum2();
-            double result = model.add(num1, num2);
+            double result = model.add(num1, num2); // Используется принцип SRP - класс отвечает только за координацию
             view.setResult(result);
         }
     }
@@ -35,7 +35,7 @@ public class CalculatorPresenter {
         public void actionPerformed(ActionEvent e) {
             double num1 = view.getNum1();
             double num2 = view.getNum2();
-            double result = model.subtract(num1, num2);
+            double result = model.subtract(num1, num2); // Используется принцип SRP - класс отвечает только за координацию
             view.setResult(result);
         }
     }
@@ -45,7 +45,7 @@ public class CalculatorPresenter {
         public void actionPerformed(ActionEvent e) {
             double num1 = view.getNum1();
             double num2 = view.getNum2();
-            double result = model.multiply(num1, num2);
+            double result = model.multiply(num1, num2); // Используется принцип SRP - класс отвечает только за координацию
             view.setResult(result);
         }
     }
@@ -56,7 +56,7 @@ public class CalculatorPresenter {
             double num1 = view.getNum1();
             double num2 = view.getNum2();
             try {
-                double result = model.divide(num1, num2);
+                double result = model.divide(num1, num2); // Используется принцип SRP - класс отвечает только за координацию
                 view.setResult(result);
             } catch (ArithmeticException ex) {
                 view.displayErrorMessage("Error: Division by zero");
